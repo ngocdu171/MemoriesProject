@@ -12,7 +12,7 @@ const App = () => {
         <Typography className={classes.heading} variant="h2" align="center">Memories</Typography>
         <img className={classes.image}
           src="https://i.pinimg.com/600x315/30/51/c6/3051c6211edf19433cb0792856ad2896.jpg" alt="memories" 
-          height="300"  width="300"
+          height="60"
         />
       </AppBar>
       <Grow in>
