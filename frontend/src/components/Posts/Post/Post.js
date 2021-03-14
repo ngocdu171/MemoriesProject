@@ -4,7 +4,7 @@ import moment from 'moment';
 import React from 'react';
 import useStyles from './styles';
 
-const Post = ({post}) => {
+const Post = ({ post,setcurrentId }) => {
     const classes = useStyles();
 
     return (
@@ -19,8 +19,9 @@ const Post = ({post}) => {
             </div>
             <div className={classes.overlay2}>
                 <Button style={{color: 'white'}} size="small" 
-                    onClick={() => {}}
-                ><MoreHoriz fontSize="default" />
+                    onClick={() => setcurrentId(post._id)}
+                >
+                    <MoreHoriz fontSize="default" />
                 </Button>
             </div>
             <div className={classes.details}>
