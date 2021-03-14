@@ -10,8 +10,8 @@ const Post = ({ post,setcurrentId }) => {
     return (
         <Card className={classes.card}>
             <CardMedia className={classes.media} 
-                image={Post.selectedFile}
-                title={Post.title}
+                image={post.selectedFile}
+                title={post.title}
             />
             <div className={classes.overlay}>
                 <Typography variant="h6">{post.creator}</Typography>
@@ -29,10 +29,13 @@ const Post = ({ post,setcurrentId }) => {
                     {post.tags.map((tag)=>`#${tag}`)}
                 </Typography>
             </div>
-            <CardContent>
                 <Typography variant="h5" gutterBottom
                     className={classes.title}
                 >
+                    {post.title}
+                </Typography>
+            <CardContent>
+                <Typography variant="h5" gutterBottom>
                     {post.message}
                 </Typography>
             </CardContent>
