@@ -54,9 +54,7 @@ const Post = ({ post,setcurrentId, setidPost }) => {
                     Like
                     {post.likeCount}
                 </Button>
-                <Button size="small" color="primary"
-                    onClick={()=>{handleDelete(post._id)}}
-                >
+                <Button size="small" color="primary" onClick={()=>dispatch(deletePost(post._id))}>
                     <Delete fontSize="small" />
                     Delete
                 </Button>

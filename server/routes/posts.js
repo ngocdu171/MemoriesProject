@@ -43,15 +43,27 @@ router.put('/:_id', async (req, res) => {
     }
 })
 
-router.delete('/:_id', (req, res) => {
+router.delete('/:_id', async (req, res) => {
     const _id = req.params._id;
-    PostModel.findByIdAndRemove(_id)
+    await PostModel.findByIdAndRemove(_id)
     .then(results => {
         res.json(results)
     })
     .catch(error => {
         res.json({error});
     })
+})
+
+router.put('/:_id/likepost', async (req, res) => {
+    const _id = req.params._id;
+    const post = await PostModel.findById(_id);
+    await PostModel.findByIdAndUpdate(_id, {likeCount: post.likeCount + 1})
+    .then((result) => {
+        res.json(result);
+    })
+    .catch((err) => {
+        res.json(err);
+    });
 })
 
 export default router;
