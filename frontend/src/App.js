@@ -18,14 +18,14 @@ const App = () => {
     dispatch(getPosts());
   }, [idPost, currentId, dispatch]);
 
-  console.log("this is CurrentId: ",currentId);
+  console.log("this is CurrentId: ", currentId);
   console.log("this is IdPost in App: ", idPost);
   return (
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
         <Typography className={classes.heading} variant="h2" align="center">Memories</Typography>
         <img className={classes.image}
-          src="https://i.pinimg.com/600x315/30/51/c6/3051c6211edf19433cb0792856ad2896.jpg" alt="memories" 
+          src="https://i.pinimg.com/600x315/30/51/c6/3051c6211edf19433cb0792856ad2896.jpg" alt="memories"
           height="60"
         />
       </AppBar>
@@ -33,7 +33,7 @@ const App = () => {
         <Container>
           <Grid container justify="space-between" alignItems="stretch" spacing={4}>
             <Grid item xs={12} sm={7}>
-              <Posts setcurrentId={setcurrentId} setidPost={setidPost}/>
+              <Posts setcurrentId={setcurrentId} setidPost={setidPost} />
             </Grid>
             <Grid item xs={12} sm={4}>
               <Form currentId={currentId} setcurrentId={setcurrentId} />
