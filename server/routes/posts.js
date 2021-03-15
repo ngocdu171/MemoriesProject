@@ -27,12 +27,13 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/:_id', async (req, res) => {
+    const _id = req.params._id;
     const post = req.body;
-    if(!req.params._id) {
+    if(!mongoose.Types.ObjectId.isValid(_id)){
         return res.status(404).send("No post with id");
     }
     else {
-        await PostModel.findByIdAndUpdate(req.params._id, post)
+        await PostModel.findByIdAndUpdate(_id, { ...post, _id})
         .then(results => {
             res.json(results);
         })
@@ -40,6 +41,17 @@ router.put('/:_id', async (req, res) => {
             res.json(err);
         })
     }
+})
+
+router.delete('/:_id', (req, res) => {
+    const _id = req.params._id;
+    PostModel.findByIdAndRemove(_id)
+    .then(results => {
+        res.json(results)
+    })
+    .catch(error => {
+        res.json({error});
+    })
 })
 
 export default router;

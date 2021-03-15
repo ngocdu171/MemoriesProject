@@ -10,13 +10,16 @@ import './index.css';
 
 const App = () => {
   const [currentId, setcurrentId] = useState(null);
+  const [idPost, setidPost] = useState(null);
   const classes = useStyles();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+  }, [idPost, currentId, dispatch]);
 
+  console.log("this is CurrentId: ",currentId);
+  console.log("this is IdPost in App: ", idPost);
   return (
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
@@ -30,7 +33,7 @@ const App = () => {
         <Container>
           <Grid container justify="space-between" alignItems="stretch" spacing={4}>
             <Grid item xs={12} sm={7}>
-              <Posts setcurrentId={setcurrentId} />
+              <Posts setcurrentId={setcurrentId} setidPost={setidPost}/>
             </Grid>
             <Grid item xs={12} sm={4}>
               <Form currentId={currentId} setcurrentId={setcurrentId} />
