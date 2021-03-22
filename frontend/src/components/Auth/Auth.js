@@ -23,6 +23,7 @@ const Auth = () => {
     }
     const switchMode = () => {
         setisSignup(!isSignup);
+        handleShowPassword(false);
     }
     const googleSuccess = async (res) => {
         console.log(res);
