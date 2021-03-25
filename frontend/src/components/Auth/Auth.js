@@ -5,11 +5,15 @@ import React, { useState } from 'react';
 import Input from './Input';
 import useStyles from './styles';
 import Icon from './Icon';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const Auth = () => {
     const classes = useStyles();
     const [ShowPassword, setShowPassword] = useState(false);
     const [isSignup, setisSignup] = useState(false);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleShowPassword = () => {
         setShowPassword(!ShowPassword);
@@ -26,7 +30,14 @@ const Auth = () => {
         handleShowPassword(false);
     }
     const googleSuccess = async (res) => {
-        console.log(res);
+        const result = res.profileObj;
+        const token = res.tokenId;
+        try {
+            dispatch({ type: 'AUTH', data: {result, token} });
+            history.push('/');
+        } catch (error) {
+            console.log(error);
+        }
     }
     const googleFailure = async (error) => {
         console.log(error);
